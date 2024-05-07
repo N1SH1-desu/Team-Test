@@ -32,3 +32,7 @@ void SceneOver::draw()
             GameLib::TEXT_ALIGN::MIDDLE);
     }
 }
+void  SceneOver::deinit()
+{
+
+}

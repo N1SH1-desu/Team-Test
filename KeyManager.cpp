@@ -1,11 +1,13 @@
 #include "KeyManager.h"
 #include "./GameLib/game_lib.h"
+#include "audio.h"
 
 KeyManager::KeyManager() :
     keydown(false),
     timer(nullptr)
 {
     timer = new CpuTimer;
+    Audio::loadAudio();
 }
 
 KeyManager::~KeyManager()
@@ -22,12 +24,14 @@ void KeyManager::Kye()
     {
         keydown = true;
         timer->Start();
+        GameLib::music::play(Audio::Sound::SHOT, false);
     }
     float delta = timer->DeltaTime();
     if (0.1f <= delta)
     {
         keydown = false;
         timer->Start();
+       
     }
 
     GameLib::debug::setString("keydown : %d", keydown);

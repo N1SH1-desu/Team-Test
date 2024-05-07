@@ -7,6 +7,7 @@ protected:
 
 public:
     virtual void init() {}
+    virtual void deinit() {}
     virtual void update() = 0;
     virtual void draw() = 0;
 };

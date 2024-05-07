@@ -31,3 +31,7 @@ void SceneTitle::draw()
             { 1, 1, 0, 1 }, GameLib::TEXT_ALIGN::MIDDLE);
     }
 }
+void SceneTitle::deinit()
+{
+    //GameLib::music::stop(Audio::Music::TITLE);
+}
