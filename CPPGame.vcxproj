@@ -82,6 +82,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="CpuTimer.cpp" />
     <ClCompile Include="GameLib\debug.cpp" />
     <ClCompile Include="GameLib\depth_stencil.cpp" />
@@ -100,6 +101,8 @@
     <ClCompile Include="GameLib\wnd_proc.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="MusicData.cpp" />
+    <ClCompile Include="obj.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="SceneClear.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneOver.cpp" />
@@ -107,6 +110,7 @@
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="CpuTimer.h" />
     <ClInclude Include="GameLib\blender.h" />
     <ClInclude Include="GameLib\debug.h" />
@@ -129,6 +133,8 @@
     <ClInclude Include="GameLib\view_settings.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MusicData.h" />
+    <ClInclude Include="obj.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneClear.h" />
     <ClInclude Include="SceneGame.h" />
