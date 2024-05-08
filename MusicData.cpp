@@ -22,7 +22,7 @@ NoteManager::~NoteManager()
 void NoteManager::AddNote(int col, int row, int num, int length, MusicDataOption* p, char sprite_index)
 {
 	Note note{};
-	note.pos = -100.0f;
+	note.pos = JUDGE_START;
 	note.perfect_pos = 60.0 * 4 * (row + (double)num / length) / p->bpm - p->offset;
 	note.Flag = false;
 	note.velocity = 1.0f;
@@ -46,6 +46,7 @@ void NoteManager::AddNote(int col, int row, int num, int length, MusicDataOption
             }
         };
     load_sprite(sprite_index, note);
+	note.object_filter = sprite_index;
     
     m_note_2d[col].push_back(note);
     m_notes_size[col]++;
@@ -83,7 +84,7 @@ void NoteManager::UpdateNotes(float current_time, float keydown_time)
 				// 加速度上昇
 				{
 					if (row.velocity <= 2.0f)
-						row.velocity += 0.025f;
+						row.velocity += 0.02f;
 				}
 
 				// 回転値
@@ -114,7 +115,9 @@ void NoteManager::JudgeFlag(float keydonw_time, Note& note)
 
 void NoteManager::DrawNotes()
 {
-	int i = 0;
+	float start_x = 0.0f;
+	float size_x = 0.0f, size_y = 0.0f;
+	char i = 0;
 	for (auto& col : m_note_2d)
 	{
 		i++;
@@ -122,9 +125,33 @@ void NoteManager::DrawNotes()
 		{
 			if (row.Flag)
 			{
+				// 落下物の種類によって大きさのスケールを変更
+				{
+					auto check_size = [](float& x, float& y, char object_fileter)
+						{
+							switch (object_fileter)
+							{
+							case '1':
+								x = 0.3f; y = 0.3f;
+								break;
+							case '2':
+								x = 0.5f; y = 0.5f;
+								break;
+							case '3':
+								x = 0.5f; y = 0.5f;
+								break;
+							default:
+								x = 0.0f; y = 0.0f;
+							}
+						};
+					check_size(size_x, size_y, row.object_filter);
+				}
+				if (i == 1) start_x = 300.0f;
+				else start_x = 960.0f;
+
 				float radian = DirectX::XMConvertToRadians(row.degree);
-				GameLib::sprite_render(row.sprite, 300.f * i, row.pos,
-					0.4f, 0.4f, 0.0f, 0.0f, 512.0f, 512.0f, 256.0f, 256.0f, radian);
+				GameLib::sprite_render(row.sprite, start_x, row.pos,
+					size_x, size_y, 0.0f, 0.0f, 512.0f, 512.0f, 256.0f, 256.0f, radian);
 			}
 		}
 	}      

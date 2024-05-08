@@ -14,10 +14,13 @@ struct Note
 	float pos = 0.0f;
 	double perfect_pos = 0.0;
 	bool Flag = false;
+
 	float velocity = 0.0f;
 	float degree = 0.0f;
 	float degree_acc = 0.0f;
 	GameLib::Sprite* sprite = nullptr;
+
+	char object_filter = '0';
 };
 
 
@@ -53,8 +56,9 @@ public:
 
 	double getNoteTiming(unsigned int, unsigned int);
 
+	static constexpr float JUDGE_START = -200.0f;
 	static constexpr float JUDGE_LINE = 700.0f;
-	static constexpr float JUDGE_SIZE = 800.0f;
+	static constexpr float JUDGE_SIZE = JUDGE_LINE - JUDGE_START;
 	static constexpr float WINDOW_H = 960;
 private:
 	void JudgeFlag(float, Note&);
