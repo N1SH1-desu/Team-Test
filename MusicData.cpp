@@ -18,12 +18,32 @@ NoteManager::~NoteManager()
 {
 }
 
-void NoteManager::AddNote(int col, int row, int num, int length, MusicDataOption* p)
+void NoteManager::AddNote(int col, int row, int num, int length, MusicDataOption* p, char sprite_index)
 {
     Note note{};
     note.pos = 0.0f;
     note.perfect_pos = 60.0 * 4 * (row + (double)num / length) / p->bpm - p->offset;
     note.Flag = false;
+
+    auto load_sprite = [](char sprite_index, Note& note)
+        {
+            switch (sprite_index)
+            {
+            case '1':
+                note.sprite = GameLib::sprite_load(L"./Data/Images/bin.png");
+                break;
+            case '2':
+                note.sprite = GameLib::sprite_load(L"./Data/Images/hako.png");
+                break;
+            case '3':
+                note.sprite = GameLib::sprite_load(L"./Data/Images/taru_2.png");
+                break;
+            default:
+                note.sprite = nullptr;
+                break;
+            }
+        };
+    load_sprite(sprite_index, note);
     
     m_note_2d[col].push_back(note);
     m_notes_size[col]++;
@@ -88,8 +108,8 @@ void NoteManager::DrawNotes()
         {
             if (row.Flag)
             {
-                GameLib::primitive::rect({ 400.0f * i, row.pos }, { 100.0f, 100.0f }, { 50.0f, 50.0f }, 0.0f,
-                    { 0.0f, 1.0f, 0.0f, 1.0 });
+                GameLib::sprite_render(row.sprite, 300.f * i, row.pos,
+                    0.4f, 0.4f, 0.0f, 0.0f, 512.0f, 512.0f, 256.0f, 256.0f); 
             }
         }
    }
@@ -201,8 +221,9 @@ void MusicData::Load_NotesData()
             {
                 if ('1' <= separate_data[i] && separate_data[i] <= '9')
                 {
+                    char sprite_index = separate_data[i];
                     // AddNote(int col, int row, int num, int length, MusicDataOption option)
-                    m_noteManager->AddNote(col, row, i, length, &m_options);
+                    m_noteManager->AddNote(col, row, i, length, &m_options, sprite_index);
                 }
             }
         }

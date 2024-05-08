@@ -6,11 +6,16 @@
 #include <sstream>
 #include "KeyManager.h"
 
+namespace GameLib {
+    class Sprite;
+}
+
 struct Note
 {
     float pos = 0.0f;
     double perfect_pos = 0.0;
     bool Flag = false;
+    GameLib::Sprite* sprite = nullptr;
 };
 
 
@@ -38,7 +43,7 @@ public:
     NoteManager();
     ~NoteManager();
 
-    void AddNote(int, int, int, int, MusicDataOption*);
+    void AddNote(int, int, int, int, MusicDataOption*, char);
 
     void InitNotes();
     void UpdateNotes(float);
