@@ -1,4 +1,4 @@
-#include "MusicData.h"
+﻿#include "MusicData.h"
 #include "./GameLib/game_lib.h"
 #include <random>
 
@@ -92,7 +92,7 @@ void NoteManager::UpdateNotes(float current_time, float keydown_time)
 				}
 
 				// ノートの座標　= 終点から始点への方向 * ((叩かれる時間 - 現在の時間) * レーンの長さ * 速度) + 終点
-				row.pos = -1.0f * ((row.perfect_pos - current_time) * JUDGE_SIZE * row.velocity) + JUDGE_LINE;
+				row.pos = -1.0f * (((float)row.perfect_pos - current_time) * JUDGE_SIZE * row.velocity) + JUDGE_LINE;
 
 				// 範囲外になったらフラグをfalseにする
 				{
@@ -108,7 +108,7 @@ void NoteManager::UpdateNotes(float current_time, float keydown_time)
 
 void NoteManager::JudgeFlag(float keydonw_time, Note& note)
 {
-	if (fabsf(note.perfect_pos - keydonw_time) <= 0.09)
+	if (fabsf((float)note.perfect_pos - keydonw_time) <= 0.09)
 		note.Flag = false;
 }
 
