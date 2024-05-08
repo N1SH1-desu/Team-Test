@@ -4,15 +4,18 @@
 class KeyManager
 {
 public:
-    KeyManager();
-    ~KeyManager();
+	KeyManager();
+	~KeyManager();
 
-    void Kye();
+	void KyeTimerStart();
+	void KyeUpdate();
 
-    const bool& GetKeyDown() const { return keydown; }
+	const bool& GetKeyDown() const { return keydown; }
+	const float& GetKeyDownTime() const { return keydown_time; }
 
 private:
-    bool keydown = false;
-    CpuTimer* timer;
+	bool keydown = false;
+	CpuTimer* timer = nullptr;
+	float keydown_time = 0.0f;
 };
 
