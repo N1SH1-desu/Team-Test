@@ -2,34 +2,30 @@
 #include "./GameLib/game_lib.h"
 
 KeyManager::KeyManager() :
-    keydown(false),
-    timer(nullptr)
+	keydown(false),
+	timer(nullptr)
 {
-    timer = new CpuTimer;
+	timer = new CpuTimer;
 }
 
 KeyManager::~KeyManager()
 {
-    delete timer;
-    timer = nullptr;
+	delete timer;
+	timer = nullptr;
 }
 
-void KeyManager::Kye()
+void KeyManager::KyeTimerStart()
 {
-    timer->Tick();
-    using namespace GameLib::input;
-    if (TRG(0) & PAD_LEFT && !keydown)
-    {
-        keydown = true;
-        timer->Start();
-    }
-    float delta = timer->DeltaTime();
-    if (0.1f <= delta)
-    {
-        keydown = false;
-        timer->Start();
-    }
+	timer->Start();
+}
 
-    GameLib::debug::setString("keydown : %d", keydown);
-    GameLib::debug::setString("delta key : %f", delta);
+void KeyManager::KyeUpdate()
+{
+	using namespace GameLib::input;
+	if (TRG(0) & PAD_LEFT)
+	{
+		timer->Tick();
+	}
+	keydown_time = timer->DeltaTime();
+	GameLib::debug::setString("keydownTime : %f", keydown_time);
 }
