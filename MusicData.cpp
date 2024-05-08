@@ -64,7 +64,7 @@ void NoteManager::InitNotes()
 				{
 					std::random_device rd;
 					std::mt19937 gen(rd());
-					std::uniform_real_distribution<> dist(1.0, 2.0);
+					std::uniform_real_distribution<> dist(-5.0, 5.0);
 					return static_cast<float>(dist(gen));
 				};
 			row.degree_acc = acc();
@@ -124,7 +124,7 @@ void NoteManager::DrawNotes()
 			{
 				float radian = DirectX::XMConvertToRadians(row.degree);
 				GameLib::sprite_render(row.sprite, 300.f * i, row.pos,
-					0.4f, 0.4f, 0.0f, 0.0f, 512.0f, 512.0f, 256.0f, 256.0f);
+					0.4f, 0.4f, 0.0f, 0.0f, 512.0f, 512.0f, 256.0f, 256.0f, radian);
 			}
 		}
 	}      
