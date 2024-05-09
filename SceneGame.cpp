@@ -3,14 +3,11 @@
 #include "WinMain.h"
 #include <stdio.h>
 #include <math.h>
-#include"obj.h"
 #include "audio.h"
 
 
 GameLib::Sprite* a[2];
 int game_timer;
-Obj obj[2];
-BreakObj breakobj;
 GameLib::Sprite* Right;
 GameLib::Sprite* Left;
 
@@ -31,12 +28,6 @@ void SceneGame::update()
 	{
 		timer.Start();
 		is = true;
-	}
-	
-	obj[1].math(game_timer);
-	if (obj[0].isbreak == true)
-	{
-		breakobj.BreakMath(obj[0].position);
 	}
 	timer.Tick();
 
@@ -59,7 +50,7 @@ void SceneGame::update()
 	if (GameLib::input::STATE(0) & GameLib::input::PAD_TRG1) { setScene(SCENE::OVER); }
 	if (GameLib::input::STATE(0) & GameLib::input::PAD_TRG2) { setScene(SCENE::CLEAR); }
 
-	
+
 	game_timer++;
 }
 
@@ -76,7 +67,7 @@ void SceneGame::draw()
 
 	GameLib::font::textOut(4, "[X]GAME CLEAR", { 0, 700 }, { 2, 2 },
 		{ 0, 1, 1, 1 }, GameLib::TEXT_ALIGN::MIDDLE_LEFT);
-	GameLib::sprite_render(Right, 900, 600,0.6f,0.6f);
+	GameLib::sprite_render(Right, 900, 600, 0.6f, 0.6f);
 	GameLib::sprite_render(Left, 100, 600, 0.6f, 0.6f);
 }
 
@@ -91,5 +82,5 @@ void SceneGame::uninit()
 void SceneGame::deinit()
 {
 	//GameLib::music::stop(Audio::Music::GAME);
-	
+
 }

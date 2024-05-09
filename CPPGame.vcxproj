@@ -101,7 +101,6 @@
     <ClCompile Include="GameLib\wnd_proc.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="MusicData.cpp" />
-    <ClCompile Include="obj.cpp" />
     <ClCompile Include="SceneClear.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneOver.cpp" />
@@ -132,7 +131,6 @@
     <ClInclude Include="GameLib\view_settings.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MusicData.h" />
-    <ClInclude Include="obj.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneClear.h" />
     <ClInclude Include="SceneGame.h" />
