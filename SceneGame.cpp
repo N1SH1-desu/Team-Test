@@ -7,7 +7,7 @@
 #include "BreakObj.h"
 
 int game_timer;
-Obj obj[2];
+
 breakObj taru;
 breakObj bin;
 breakObj hako;
@@ -23,7 +23,23 @@ void SceneGame::init()
 
 	Right = GameLib::sprite_load(L"Data/Images/juu_migi.png");
 	Left = GameLib::sprite_load(L"Data/Images/juu_hidari.png");
-	
+
+	taru.hahen[0] = GameLib::sprite_load(L"Data/Images/hahen1.png");
+	taru.hahen[1] = GameLib::sprite_load(L"Data/Images/hahen2.png");
+	taru.hahen[2] = GameLib::sprite_load(L"Data/Images/hahen3.png");
+	taru.hahen[3] = GameLib::sprite_load(L"Data/Images/ginn.png");
+
+	bin.hahen[0] = GameLib::sprite_load(L"Data/Images/bin1.png");
+	bin.hahen[1] = GameLib::sprite_load(L"Data/Images/bin4.png");
+	bin.hahen[2] = GameLib::sprite_load(L"Data/Images/bin3.png");
+	bin.hahen[3] = GameLib::sprite_load(L"Data/Images/bin5.png");
+
+	bin.hahen[0] = GameLib::sprite_load(L"Data/Images/bin1.png");
+	bin.hahen[1] = GameLib::sprite_load(L"Data/Images/bin4.png");
+	bin.hahen[2] = GameLib::sprite_load(L"Data/Images/bin3.png");
+	bin.hahen[3] = GameLib::sprite_load(L"Data/Images/bin5.png");
+
+
 }
 
 void SceneGame::update()
@@ -34,7 +50,6 @@ void SceneGame::update()
 		is = true;
 	}
 	
-	obj[1].math(game_timer);
 	
 	timer.Tick();
 

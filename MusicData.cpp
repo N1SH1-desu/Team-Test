@@ -1,6 +1,6 @@
 #include "MusicData.h"
 #include "./GameLib/game_lib.h"
-
+#include "BreakObj.h"
 using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,6 +54,7 @@ void NoteManager::UpdateNotes(float current_time)
                 if (WINDOW_H < row.pos && 0.3 < current_time - row.perfect_pos)
                 {
                     row.Flag = false;
+
                 }
             }
         }

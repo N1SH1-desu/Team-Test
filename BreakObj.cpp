@@ -39,11 +39,7 @@ void breakObj::defoultg()
 
 void breakObj::Break_init(float posx, float posy)
 {
-    hahen[0] = GameLib::sprite_load(L"Data/Images/hahen1.png");
-    hahen[1] = GameLib::sprite_load(L"Data/Images/hahen2.png");
-    hahen[2] = GameLib::sprite_load(L"Data/Images/hahen3.png");
-    hahen[3] = GameLib::sprite_load(L"Data/Images/ginn.png");
-
+    
 
     speedX = 6;
     speedY = 6;
