@@ -27,7 +27,7 @@ void KeyManager::KyeUpdate()
 		timer->Tick();
 		keydown_time_left = timer->DeltaTime();
 	}
-	if(TRG(0) & PAD_RIGHT)
+	if (TRG(0) & PAD_RIGHT)
 	{
 		timer->Tick();
 		keydown_time_right = timer->DeltaTime();
