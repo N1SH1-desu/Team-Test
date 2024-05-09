@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "CpuTimer.h"
 #include "MusicData.h"
+#include "KeyManager.h"
 
 class SceneGame : public Scene
 {
@@ -18,4 +19,5 @@ private:
     int t;
     CpuTimer timer;
     MusicData* p;
+    KeyManager key;
 };

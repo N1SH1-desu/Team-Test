@@ -1,40 +1,41 @@
 #include "KeyManager.h"
 #include "./GameLib/game_lib.h"
-#include "audio.h"
+#include "Audio.h"
 
 KeyManager::KeyManager() :
-    keydown(false),
-    timer(nullptr)
+	keydown(false),
+	timer(nullptr)
 {
-    timer = new CpuTimer;
-    Audio::loadAudio();
+	timer = new CpuTimer;
+
+	//Audio::loadAudio();
 }
 
 KeyManager::~KeyManager()
 {
-    delete timer;
-    timer = nullptr;
+	delete timer;
+	timer = nullptr;
 }
 
-void KeyManager::Kye()
+void KeyManager::KyeTimerStart()
 {
-    timer->Tick();
-    using namespace GameLib::input;
-    if (TRG(0) & PAD_LEFT && !keydown)
-    {
-        keydown = true;
-        timer->Start();
-        GameLib::music::play(Audio::Sound::SHOT, false);
-        
-    }
-    float delta = timer->DeltaTime();
-    if (0.1f <= delta)
-    {
-        keydown = false;
-        timer->Start();
-       
-    }
+	timer->Start();
+}
 
-    GameLib::debug::setString("keydown : %d", keydown);
-    GameLib::debug::setString("delta key : %f", delta);
+void KeyManager::KyeUpdate()
+{
+	using namespace GameLib::input;
+	if (TRG(0) & PAD_LEFT)
+	{
+		timer->Tick();
+		keydown_time_left = timer->DeltaTime();
+		//GameLib::sound::play(Audio::Sound::SHOT, false);
+	}
+	if (TRG(0) & PAD_RIGHT)
+	{
+		timer->Tick();
+		keydown_time_right = timer->DeltaTime();
+	}
+	GameLib::debug::setString("keydownTimeLeft : %f", keydown_time_left);
+	GameLib::debug::setString("keydownTimeRight : %f", keydown_time_right);
 }

@@ -16,7 +16,7 @@ Scene *pScene, *pNextScene;
 int APIENTRY WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int)
 {
     // 初期設定
-    GameLib::init(L"C++ Shooting Game", 1280, 960, false);
+    GameLib::init(L"C++ Shooting Game", 1280, 720, false);
 
     // ブレンドモードの設定
     GameLib::setBlendMode(GameLib::Blender::BS_ALPHA);

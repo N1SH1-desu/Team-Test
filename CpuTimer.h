@@ -10,6 +10,7 @@ public:
 
     void Start();
     void Tick();
+    void ReStart();
 
 private:
     double  m_deltaTime;
