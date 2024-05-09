@@ -8,7 +8,7 @@ KeyManager::KeyManager() :
 {
 	timer = new CpuTimer;
 
-	Audio::loadAudio();
+	//Audio::loadAudio();
 }
 
 KeyManager::~KeyManager()
@@ -29,7 +29,7 @@ void KeyManager::KyeUpdate()
 	{
 		timer->Tick();
 		keydown_time_left = timer->DeltaTime();
-		GameLib::sound::play(Audio::Sound::SHOT, false);
+		//GameLib::sound::play(Audio::Sound::SHOT, false);
 	}
 	if (TRG(0) & PAD_RIGHT)
 	{

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include "BreakObj.h"
 
 namespace GameLib {
 	class Sprite;
@@ -22,6 +23,8 @@ struct Note
 	GameLib::Sprite* sprite = nullptr;
 
 	char object_filter = '0';
+
+	breakObj obj;
 };
 
 
