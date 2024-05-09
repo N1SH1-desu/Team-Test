@@ -34,10 +34,10 @@ void SceneGame::init()
 	bin.hahen[2] = GameLib::sprite_load(L"Data/Images/bin3.png");
 	bin.hahen[3] = GameLib::sprite_load(L"Data/Images/bin5.png");
 
-	bin.hahen[0] = GameLib::sprite_load(L"Data/Images/bin1.png");
-	bin.hahen[1] = GameLib::sprite_load(L"Data/Images/bin4.png");
-	bin.hahen[2] = GameLib::sprite_load(L"Data/Images/bin3.png");
-	bin.hahen[3] = GameLib::sprite_load(L"Data/Images/bin5.png");
+	bin.hahen[0] = GameLib::sprite_load(L"Data/Images/hako1.png");
+	bin.hahen[1] = GameLib::sprite_load(L"Data/Images/hako2.png");
+	bin.hahen[2] = GameLib::sprite_load(L"Data/Images/hako3.png");
+	bin.hahen[3] = GameLib::sprite_load(L"Data/Images/hako4.png");
 
 
 }
