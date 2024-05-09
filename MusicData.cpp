@@ -211,12 +211,14 @@ bool MusicData::GetFileData()
 
 		Load_MusicOptions();
 	}
+
 	// 譜面データに移動
-	m_file.seekg(2, ios::cur);
+	//m_file.seekg(1, ios::cur);
+
 	// テキストファイルから譜面を読み込み
 	{
 		string music_notes;
-		getline(m_file, music_notes, '.');
+		getline(m_file, music_notes, '#');
 		m_file_data << music_notes;
 		Load_NotesData();
 	}
