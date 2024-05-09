@@ -13,13 +13,3 @@ public:
     void math(int t);
 };
 
-class BreakObj
-{
-private:
-    VECTOR2 BreakPos;
-    int Breaktimer;
-    float BreakScale;
-public:
-    void BreakMath(VECTOR2 pos);
-    
-};

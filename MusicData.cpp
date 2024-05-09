@@ -72,6 +72,7 @@ void NoteManager::JudgeFlag(float current_time)
             if (fabsf(row.perfect_pos - current_time) <= (0.2 / 2) && key_manager.GetKeyDown())
             {
                 row.Flag = false;
+
             }
         }
     }

@@ -25,6 +25,7 @@ void KeyManager::Kye()
         keydown = true;
         timer->Start();
         GameLib::music::play(Audio::Sound::SHOT, false);
+        
     }
     float delta = timer->DeltaTime();
     if (0.1f <= delta)

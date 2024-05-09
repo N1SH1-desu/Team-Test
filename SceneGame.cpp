@@ -5,12 +5,14 @@
 #include <math.h>
 #include"obj.h"
 #include "audio.h"
+#include "BreakObj.h"
 
-
-GameLib::Sprite* a[2];
 int game_timer;
 Obj obj[2];
-BreakObj breakobj;
+breakObj taru;
+breakObj bin;
+breakObj hako;
+
 GameLib::Sprite* Right;
 GameLib::Sprite* Left;
 
@@ -22,7 +24,7 @@ void SceneGame::init()
 
 	Right = GameLib::sprite_load(L"Data/Images/juu_migi.png");
 	Left = GameLib::sprite_load(L"Data/Images/juu_hidari.png");
-
+	
 }
 
 void SceneGame::update()
@@ -34,10 +36,7 @@ void SceneGame::update()
 	}
 	
 	obj[1].math(game_timer);
-	if (obj[0].isbreak == true)
-	{
-		breakobj.BreakMath(obj[0].position);
-	}
+	
 	timer.Tick();
 
 	GameLib::debug::setString("currentTime: %lf", timer.DeltaTime());
