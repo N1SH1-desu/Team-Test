@@ -86,8 +86,8 @@ void NoteManager::UpdateNotes(float current_time, float keydown_left, float keyd
 			{
 				// 加速度上昇
 				{
-					if (row.velocity <= 1.8f)
-						row.velocity += 0.015f;
+					if (row.velocity <= 2.0f)
+						row.velocity += 0.02f;
 				}
 
 				// 回転値
