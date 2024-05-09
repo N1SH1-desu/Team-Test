@@ -54,4 +54,6 @@ void SceneGame::uninit()
 		delete p;
 		p = nullptr;
 	}
+
+
 }

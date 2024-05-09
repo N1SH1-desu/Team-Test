@@ -17,6 +17,14 @@ NoteManager::NoteManager()
 
 NoteManager::~NoteManager()
 {
+	for (auto& col : m_note_2d)
+	{
+		for (auto& row : col)
+		{
+			delete row.sprite;
+			row.sprite = nullptr;
+		}
+	}
 }
 
 void NoteManager::AddNote(int col, int row, int num, int length, MusicDataOption* p, char sprite_index)
@@ -191,6 +199,14 @@ MusicData::MusicData(const std::string& filename) :
 	m_noteManager = new NoteManager;
 	m_file_name = filename;
 	GetFileData();
+}
+
+MusicData::~MusicData()
+{
+	delete m_noteManager;
+	m_noteManager = nullptr;
+
+	m_file.clear();
 }
 
 bool MusicData::GetFileData()

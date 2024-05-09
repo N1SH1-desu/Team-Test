@@ -1,11 +1,14 @@
 #include "KeyManager.h"
 #include "./GameLib/game_lib.h"
+#include "Audio.h"
 
 KeyManager::KeyManager() :
 	keydown(false),
 	timer(nullptr)
 {
 	timer = new CpuTimer;
+
+	Audio::loadAudio();
 }
 
 KeyManager::~KeyManager()
@@ -26,6 +29,7 @@ void KeyManager::KyeUpdate()
 	{
 		timer->Tick();
 		keydown_time_left = timer->DeltaTime();
+		GameLib::sound::play(Audio::Sound::SHOT, false);
 	}
 	if (TRG(0) & PAD_RIGHT)
 	{

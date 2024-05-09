@@ -78,7 +78,7 @@ public:
 
 
 	MusicData(const std::string&);
-
+	~MusicData();
 
 	bool GetFileData();
 	bool GetFileData(const std::string&);
