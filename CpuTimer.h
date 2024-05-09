@@ -3,19 +3,20 @@
 class CpuTimer
 {
 public:
-    CpuTimer();
-    ~CpuTimer();
+	CpuTimer();
+	~CpuTimer();
 
-    float DeltaTime() const;
+	float DeltaTime() const;
 
-    void Start();
-    void Tick();
+	void Start();
+	void Tick();
+	void ReStart();
 
 private:
-    double  m_deltaTime;
-    double  m_perSecCount;
-    
-    __int64 m_baseTime;
-    __int64 m_prevTime;
-    __int64 m_currTime;
+	double  m_deltaTime;
+	double  m_perSecCount;
+
+	__int64 m_baseTime;
+	__int64 m_prevTime;
+	__int64 m_currTime;
 };

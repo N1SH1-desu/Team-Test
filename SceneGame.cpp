@@ -8,25 +8,35 @@ void SceneGame::init()
 	p = new MusicData("music.txt");
 
 	p->getNoteManager().InitNotes();
+
+	timer.Start();
 }
 
 void SceneGame::update()
 {
+	static float before_music = 0.0f;
+	timer.Tick();
 	if (!is)
 	{
-		timer.Start();
-		key.KyeTimerStart();
-		is = true;
+		before_music = timer.DeltaTime();
+		if (before_music >= 2.0f)
+		{
+			is = true;
+			timer.ReStart();
+			key.KyeTimerStart();
+		}
 	}
 
-	timer.Tick();
+	if (is)
+	{
+		key.KyeUpdate();
+		p->getNoteManager().UpdateNotes(timer.DeltaTime(), key.GetKeyDownTimeLeft(), key.GetKeyDownTimeRight());
+	}
 
-	key.KyeUpdate();
-	p->getNoteManager().UpdateNotes(timer.DeltaTime(), key.GetKeyDownTimeLeft(), key.GetKeyDownTimeRight());
-
-	// シーン切り替えチェック
-	if (GameLib::input::STATE(0) & GameLib::input::PAD_TRG1) { setScene(SCENE::OVER); }
-	if (GameLib::input::STATE(0) & GameLib::input::PAD_TRG2) { setScene(SCENE::CLEAR); }
+	if (timer.DeltaTime() >= 135)
+	{
+		setScene(SCENE::CLEAR);
+	}
 }
 
 void SceneGame::draw()
@@ -35,13 +45,6 @@ void SceneGame::draw()
 	GameLib::clear(0, 0, 0);
 
 	p->getNoteManager().DrawNotes();
-
-	// 文字列描画
-	GameLib::font::textOut(4, "[Z]GAME OVER", { 0, 660 }, { 2, 2 },
-		{ 1, 0, 0, 1 }, GameLib::TEXT_ALIGN::MIDDLE_LEFT);
-
-	GameLib::font::textOut(4, "[X]GAME CLEAR", { 0, 700 }, { 2, 2 },
-		{ 0, 1, 1, 1 }, GameLib::TEXT_ALIGN::MIDDLE_LEFT);
 }
 
 void SceneGame::uninit()

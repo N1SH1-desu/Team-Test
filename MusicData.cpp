@@ -24,32 +24,33 @@ void NoteManager::AddNote(int col, int row, int num, int length, MusicDataOption
 	Note note{};
 	note.pos = JUDGE_START;
 	note.perfect_pos = 60.0 * 4 * (row + (double)num / length) / p->bpm - p->offset;
+	note.note_before_sound = note.perfect_pos + p->offset;
 	note.Flag = false;
 	note.velocity = 1.0f;
 
-    auto load_sprite = [](char sprite_index, Note& note)
-        {
-            switch (sprite_index)
-            {
-            case '1':
-                note.sprite = GameLib::sprite_load(L"./Data/Images/bin.png");
-                break;
-            case '2':
-                note.sprite = GameLib::sprite_load(L"./Data/Images/hako.png");
-                break;
-            case '3':
-                note.sprite = GameLib::sprite_load(L"./Data/Images/taru_2.png");
-                break;
-            default:
-                note.sprite = nullptr;
-                break;
-            }
-        };
-    load_sprite(sprite_index, note);
+	auto load_sprite = [](char sprite_index, Note& note)
+		{
+			switch (sprite_index)
+			{
+			case '1':
+				note.sprite = GameLib::sprite_load(L"./Data/Images/bin.png");
+				break;
+			case '2':
+				note.sprite = GameLib::sprite_load(L"./Data/Images/hako.png");
+				break;
+			case '3':
+				note.sprite = GameLib::sprite_load(L"./Data/Images/taru_2.png");
+				break;
+			default:
+				note.sprite = nullptr;
+				break;
+			}
+		};
+	load_sprite(sprite_index, note);
 	note.object_filter = sprite_index;
-    
-    m_note_2d[col].push_back(note);
-    m_notes_size[col]++;
+
+	m_note_2d[col].push_back(note);
+	m_notes_size[col]++;
 }
 
 void NoteManager::InitNotes()
@@ -85,8 +86,8 @@ void NoteManager::UpdateNotes(float current_time, float keydown_left, float keyd
 			{
 				// 加速度上昇
 				{
-					if (row.velocity <= 2.0f)
-						row.velocity += 0.02f;
+					if (row.velocity <= 1.8f)
+						row.velocity += 0.015f;
 				}
 
 				// 回転値
@@ -108,7 +109,7 @@ void NoteManager::UpdateNotes(float current_time, float keydown_left, float keyd
 			{
 				JudgeFlag(keydown_left, row);
 			}
-			else 
+			else
 			{
 				JudgeFlag(keydown_right, row);
 			}
@@ -163,7 +164,7 @@ void NoteManager::DrawNotes()
 					size_x, size_y, 0.0f, 0.0f, 512.0f, 512.0f, 256.0f, 256.0f, radian);
 			}
 		}
-	}      
+	}
 
 	GameLib::primitive::line({ 0.0f, JUDGE_LINE }, { 1280.0f, JUDGE_LINE }, { 1.0f, 1.0f, 1.0f, 1.0f });
 }
@@ -279,23 +280,23 @@ void MusicData::Load_MusicOptions()
 
 void MusicData::Load_NotesData()
 {
-    string data;
-    for (int row = 0; getline(m_file_data, data); row++)
-    {
-        stringstream data_stream(data);
-        string separate_data;
-        for (int col = 0; getline(data_stream, separate_data, ','); col++)
-        {
-            int length = (int)separate_data.size();
-            for (int i = 0; i < length; i++)
-            {
-                if ('1' <= separate_data[i] && separate_data[i] <= '9')
-                {
-                    char sprite_index = separate_data[i];
-                    // AddNote(int col, int row, int num, int length, MusicDataOption option)
-                    m_noteManager->AddNote(col, row, i, length, &m_options, sprite_index);
-                }
-            }
-        }
-    }
+	string data;
+	for (int row = 0; getline(m_file_data, data); row++)
+	{
+		stringstream data_stream(data);
+		string separate_data;
+		for (int col = 0; getline(data_stream, separate_data, ','); col++)
+		{
+			int length = (int)separate_data.size();
+			for (int i = 0; i < length; i++)
+			{
+				if ('1' <= separate_data[i] && separate_data[i] <= '9')
+				{
+					char sprite_index = separate_data[i];
+					// AddNote(int col, int row, int num, int length, MusicDataOption option)
+					m_noteManager->AddNote(col, row, i, length, &m_options, sprite_index);
+				}
+			}
+		}
+	}
 }

@@ -6,12 +6,13 @@
 #include <sstream>
 
 namespace GameLib {
-    class Sprite;
+	class Sprite;
 }
 
 struct Note
 {
 	float pos = 0.0f;
+	float note_before_sound = 0.0f;
 	double perfect_pos = 0.0;
 	bool Flag = false;
 
@@ -48,7 +49,7 @@ public:
 	NoteManager();
 	~NoteManager();
 
-    void AddNote(int, int, int, int, MusicDataOption*, char);
+	void AddNote(int, int, int, int, MusicDataOption*, char);
 
 	void InitNotes();
 	void UpdateNotes(float, float, float);
