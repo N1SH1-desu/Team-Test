@@ -22,7 +22,7 @@ void SceneGame::update()
 	timer.Tick();
 
 	key.KyeUpdate();
-	p->getNoteManager().UpdateNotes(timer.DeltaTime(), key.GetKeyDownTime());
+	p->getNoteManager().UpdateNotes(timer.DeltaTime(), key.GetKeyDownTimeLeft(), key.GetKeyDownTimeRight());
 
 	// シーン切り替えチェック
 	if (GameLib::input::STATE(0) & GameLib::input::PAD_TRG1) { setScene(SCENE::OVER); }

@@ -25,7 +25,13 @@ void KeyManager::KyeUpdate()
 	if (TRG(0) & PAD_LEFT)
 	{
 		timer->Tick();
+		keydown_time_left = timer->DeltaTime();
 	}
-	keydown_time = timer->DeltaTime();
-	GameLib::debug::setString("keydownTime : %f", keydown_time);
+	if(TRG(0) & PAD_RIGHT)
+	{
+		timer->Tick();
+		keydown_time_right = timer->DeltaTime();
+	}
+	GameLib::debug::setString("keydownTimeLeft : %f", keydown_time_left);
+	GameLib::debug::setString("keydownTimeRight : %f", keydown_time_right);
 }

@@ -73,10 +73,12 @@ void NoteManager::InitNotes()
 	}
 }
 
-void NoteManager::UpdateNotes(float current_time, float keydown_time)
+void NoteManager::UpdateNotes(float current_time, float keydown_left, float keydown_right)
 {
+	int i = 0;
 	for (auto& col : m_note_2d)
 	{
+		i++;
 		for (auto& row : col)
 		{
 			if (row.Flag && ((row.perfect_pos - current_time) <= 1.0f))
@@ -102,7 +104,14 @@ void NoteManager::UpdateNotes(float current_time, float keydown_time)
 				}
 
 			}
-			JudgeFlag(keydown_time, row);
+			if (i == 1)
+			{
+				JudgeFlag(keydown_left, row);
+			}
+			else 
+			{
+				JudgeFlag(keydown_right, row);
+			}
 		}
 	}
 }

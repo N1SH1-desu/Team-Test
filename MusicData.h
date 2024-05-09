@@ -51,7 +51,7 @@ public:
     void AddNote(int, int, int, int, MusicDataOption*, char);
 
 	void InitNotes();
-	void UpdateNotes(float, float);
+	void UpdateNotes(float, float, float);
 	void DrawNotes();
 
 	double getNoteTiming(unsigned int, unsigned int);
