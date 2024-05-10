@@ -36,6 +36,6 @@ void KeyManager::KyeUpdate()
 		timer->Tick();
 		keydown_time_right = timer->DeltaTime();
 	}
-	GameLib::debug::setString("keydownTimeLeft : %f", keydown_time_left);
-	GameLib::debug::setString("keydownTimeRight : %f", keydown_time_right);
+	/*GameLib::debug::setString("keydownTimeLeft : %f", keydown_time_left);
+	GameLib::debug::setString("keydownTimeRight : %f", keydown_time_right);*/
 }

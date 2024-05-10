@@ -68,10 +68,10 @@ void SceneGame::update()
 		p->getNoteManager().UpdateNotes(timer.DeltaTime(), key.GetKeyDownTimeLeft(), key.GetKeyDownTimeRight());
 	}
 	
-	/*if (timer.DeltaTime() >= 135)
+	if (timer.DeltaTime() >= 135)
 	{
 		setScene(SCENE::CLEAR);
-	}*/
+	}
 	
 	
 }

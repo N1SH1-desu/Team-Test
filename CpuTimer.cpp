@@ -43,7 +43,7 @@ void CpuTimer::Tick()
 
 	m_prevTime = currTime;
 
-	GameLib::debug::setString("delta : %f", (float)m_deltaTime);
+	/*GameLib::debug::setString("delta : %f", (float)m_deltaTime);*/
 
 }
 
