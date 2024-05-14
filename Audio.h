@@ -4,14 +4,14 @@ namespace AudioPaths
 
 	namespace Music
 	{
-		/*inline const wchar_t* TITLE;
-		inline const wchar_t* GAME;
-		inline const wchar_t* CLEAR;*/
+		//inline const wchar_t* TITLE;
+		inline const wchar_t* GAME = L"./Data/Musics/Western.wav";
+		//inline const wchar_t* CLEAR;
 	}
 
 	namespace Sound
 	{
-		//inline const wchar_t* THROW;
+		//inline const wchar_t* THROW = L"Data/Musics/throw.wav";
 		inline const wchar_t* SHOT = L"Data/Musics/shot_sound.wav";
 		//inline const wchar_t* CASK;
 
@@ -24,19 +24,10 @@ class Audio
 public:
 	enum Music
 	{
-		TITLE,
 		GAME,
-		CLEAR
+		SHOT,
 	};
 
-	enum Sound
-	{
-		THROW,
-		SHOT,
-		GLASS,
-		BOX,
-		CASK,
-	};
 
 	Audio() = default;
 	~Audio() = default;

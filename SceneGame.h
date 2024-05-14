@@ -3,6 +3,7 @@
 #include "CpuTimer.h"
 #include "MusicData.h"
 #include "KeyManager.h"
+#include "GameLib/sprite.h"
 
 class SceneGame : public Scene
 {
@@ -18,4 +19,7 @@ private:
 	CpuTimer timer;
 	MusicData* p;
 	KeyManager key;
+	GameLib::Sprite* back_image;
+	GameLib::Sprite* gun_left;
+	GameLib::Sprite* gun_right;
 };

@@ -61,9 +61,9 @@ public:
 	double getNoteTiming(unsigned int, unsigned int);
 
 	static constexpr float JUDGE_START = -200.0f;
-	static constexpr float JUDGE_LINE = 700.0f;
+	static constexpr float JUDGE_LINE = 600.0f;
 	static constexpr float JUDGE_SIZE = JUDGE_LINE - JUDGE_START;
-	static constexpr float WINDOW_H = 960;
+	static constexpr float WINDOW_H = 720;
 private:
 	void JudgeFlag(float, Note&);
 private:

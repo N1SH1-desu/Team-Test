@@ -5,6 +5,7 @@
 void SceneTitle::init()
 {
 	timer = 0;
+	title = GameLib::sprite_load(L"./Data/Images/title.png");
 }
 
 void SceneTitle::update()
@@ -21,6 +22,8 @@ void SceneTitle::update()
 void SceneTitle::draw()
 {
 	GameLib::clear(0, 0, 0);
+
+	GameLib::sprite_render(title, 0, 0, 1, 1, 0, 0, 1280, 720);
 
 	if (timer / 30 % 2)
 	{
